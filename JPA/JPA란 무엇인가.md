@@ -58,7 +58,7 @@ SQL에 모든 것을 의존하는 상황에서는 개발자들이 엔티티를 �
   
 애플리케이션은 <strong>객체지향 언어</strong><br>
 데이터는 <strong>관계형 데이터베이스</strong><br>
-&rarr; 패러다임 불일치
+#### &rarr; 패러다임 불일치
 
 1. 상속
     ~~~java
@@ -203,5 +203,47 @@ SQL에 모든 것을 의존하는 상황에서는 개발자들이 엔티티를 �
     
     member1 == member2; // true
     ~~~
+
+
+## 1.3 JPA란 무엇인가?
+
+### JPA 
+JPA(Java Persistence API) = 자바 진영의 <strong>ORM</strong> 기술 표준
+JPA는 애플리케이션과 JDBC 사이에서 동작한다. 
+
+### ORM 
+ORM(Object-Relational Mapping) 프레임워크 = 객체와 관계형 데이터베이스를 매핑
+&rarr; ORM 프레임워크는 객체와 테이블을 매핑해서 패러다임의 불일치 문제를 개발자 대신 해결해준다. 
+
+- 저장
+  - DAO에서 Entity 객체 persist() <br>
+  - ORM 프레임워크 
+    - Entity 분석
+    - INSERT SQL 생성
+    - JDBC API 사용 &rarr; DB에 객체 저장
+
+- 조회<br>
+  - DAO에서 find()<br>
+  - ORM 프레임워크<br>
+      - SELECT SQL 생성
+      - JDBC API 사용
+      - ResultSet 매핑 &rarr; DB에 SQL 사용 
+      - 결과 반환 후 Entity 객체 return
+#### &rarr; 패러다임 불일치 해결
   
-    
+ORM 프레임워크는 단순히 SQL을 개발자 대신 생성해서 데이터베이스에 전달해주는 것뿐만 아니라 다양한 패러다임의 불일치 문제들도 해결해준다. 
+
+
+## ⭐ JPA를 사용하는 이유! ⭐
+- 생산성<br>
+      데이터베이스 설계 중심의 패러다임 &rarr; <strong>객체 설계 중심의 패러다임</strong><br>
+- 유지보수<br>
+      SQL과 JDBC API 코드를 <strong>JPA가 대신 처리</strong>해주므로 유지보수해야 하는 코드 수가 줄어든다.<br>
+- 패러다임의 불일치 해결<br>
+- 성능<br>
+- 데이터 접근 추상화와 벤더 독립성<br>
+      관계형 데이터베이스는 같은 기능도 벤더마다 사용법이 다른 경우가 많다. JPA는 애플리케이션과 데이터베이스 사이에 추상화된 데이터 접근 계층을 제공해서 특정 데이터베이스 기술에 종속되지 않도록 한다.<br>
+- 표준<br>
+      JPA는 자바 진영의 ORM 기술 표준이다. 표준을 사용하면 다른 구현 기술로 손쉽게 변경할 수 있다. 
+
+  
